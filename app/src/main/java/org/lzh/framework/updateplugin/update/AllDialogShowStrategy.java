@@ -1,6 +1,6 @@
 package org.lzh.framework.updateplugin.update;
 
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.strategy.UpdateStrategy;
 
 /**
@@ -13,7 +13,7 @@ public class AllDialogShowStrategy implements UpdateStrategy {
      * @return true 显示弹窗
      */
     @Override
-    public boolean isShowUpdateDialog(Update update) {
+    public boolean isShowUpdateDialog(UpdateInterface update) {
         return true;
     }
 

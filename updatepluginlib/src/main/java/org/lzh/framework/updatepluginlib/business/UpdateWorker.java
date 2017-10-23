@@ -18,7 +18,7 @@ package org.lzh.framework.updatepluginlib.business;
 import org.lzh.framework.updatepluginlib.UpdateBuilder;
 import org.lzh.framework.updatepluginlib.callback.DefaultCheckCB;
 import org.lzh.framework.updatepluginlib.model.CheckEntity;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.model.UpdateParser;
 import org.lzh.framework.updatepluginlib.strategy.ForcedUpdateStrategy;
 import org.lzh.framework.updatepluginlib.util.Recyclable;
@@ -53,7 +53,7 @@ public abstract class UpdateWorker extends UnifiedWorker implements Runnable,Rec
         try {
             String response = check(builder.getCheckEntity());
             UpdateParser jsonParser = builder.getJsonParser();
-            Update parse = preHandle(jsonParser.parse(response));
+            UpdateInterface parse = preHandle(jsonParser.parse(response));
             if (parse == null) {
                 throw new IllegalArgumentException("parse response to update failed by " + jsonParser.getClass().getCanonicalName());
             }
@@ -77,7 +77,7 @@ public abstract class UpdateWorker extends UnifiedWorker implements Runnable,Rec
      */
     protected abstract String check(CheckEntity entity) throws Exception;
 
-    private void sendHasUpdate(final Update update) {
+    private void sendHasUpdate(final UpdateInterface update) {
         if (checkCB == null) return;
         Utils.getMainHandler().post(new Runnable() {
             @Override
@@ -118,14 +118,15 @@ public abstract class UpdateWorker extends UnifiedWorker implements Runnable,Rec
         this.checkCB = null;
     }
 
-    private Update preHandle(Update update) {
+    private UpdateInterface preHandle(UpdateInterface update) {
         if (update == null) {
             return null;
         }
 
         // 当需要进行强制更新时。覆盖替换更新策略，且关闭忽略功能
         if (update.isForced()) {
-            update.setIgnore(false);
+            //TODO 所有的update.isIgnore() 都有 !update.isForced() 并列条件,所以多余
+//            update.setIgnore(false);
             builder.strategy(new ForcedUpdateStrategy());
         }
         return update;

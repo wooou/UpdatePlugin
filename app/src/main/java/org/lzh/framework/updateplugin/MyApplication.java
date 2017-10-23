@@ -5,7 +5,7 @@ import android.app.Application;
 import org.json.JSONObject;
 import org.lzh.framework.updateplugin.widget.ToastTool;
 import org.lzh.framework.updatepluginlib.UpdateConfig;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.model.UpdateParser;
 
 /**
@@ -26,7 +26,7 @@ public class MyApplication extends Application {
                 // 必填：用于从数据更新接口获取的数据response中。解析出Update实例。以便框架内部处理
                 .jsonParser(new UpdateParser() {
                     @Override
-                    public Update parse(String response) throws Exception{
+                    public UpdateInterface parse(String response) throws Exception{
                         /* 此处根据上面url或者checkEntity设置的检查更新接口的返回数据response解析出
                          * 一个update对象返回即可。更新启动时框架内部即可根据update对象的数据进行处理
                          */

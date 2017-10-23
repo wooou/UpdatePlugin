@@ -35,5 +35,5 @@ public interface UpdateParser {
      * @return 被创建的更新数据实体类。不能为null
      * @throws Exception error occurs.
      */
-    Update parse(String httpResponse) throws Exception;
+    UpdateInterface parse(String httpResponse) throws Exception;
 }

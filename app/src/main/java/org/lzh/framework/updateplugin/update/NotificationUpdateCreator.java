@@ -13,7 +13,7 @@ import android.support.v7.app.NotificationCompat;
 
 import org.lzh.framework.updateplugin.R;
 import org.lzh.framework.updatepluginlib.creator.DialogCreator;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 
 import java.util.UUID;
 
@@ -24,12 +24,12 @@ public class NotificationUpdateCreator extends DialogCreator {
     private final static String ACTION_UPDATE = "action.update.shot";
     private final static String ACTION_CANCEL = "action.update.cancel";
     private RequestUpdateReceiver requestUpdateReceiver;
-    private Update update;
+    private UpdateInterface update;
     NotificationManager manager;
     int id;
 
     @Override
-    public Dialog create(Update update, Activity context) {
+    public Dialog create(UpdateInterface update, Activity context) {
         requestUpdateReceiver = new RequestUpdateReceiver();
         registerReceiver(context);
         createNotification(context);

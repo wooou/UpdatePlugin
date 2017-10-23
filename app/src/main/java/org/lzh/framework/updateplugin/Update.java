@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lzh.framework.updatepluginlib.model;
+package org.lzh.framework.updateplugin;
 
 import org.lzh.framework.updatepluginlib.creator.DefaultNeedInstallCreator;
 import org.lzh.framework.updatepluginlib.creator.DefaultNeedUpdateCreator;
+import org.lzh.framework.updatepluginlib.model.DefaultChecker;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.strategy.ForcedUpdateStrategy;
 
 /**
@@ -24,7 +26,12 @@ import org.lzh.framework.updatepluginlib.strategy.ForcedUpdateStrategy;
  *
  * @author haoge
  */
-public class Update {
+public class Update implements UpdateInterface{
+
+    /**
+     * 更改之后,属性可以任意取名,对应自己后台
+     * 而不用再多写一个无用的类
+     */
 
     private boolean forced;
     private boolean ignore;

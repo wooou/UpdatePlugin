@@ -19,7 +19,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.util.ActivityManager;
 
 /**
@@ -32,7 +32,7 @@ public class WifiFirstStrategy implements UpdateStrategy {
     private boolean isWifi;
 
     @Override
-    public boolean isShowUpdateDialog(Update update) {
+    public boolean isShowUpdateDialog(UpdateInterface update) {
         isWifi = isConnectedByWifi();
         return !isWifi;
     }

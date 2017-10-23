@@ -20,7 +20,7 @@ import android.app.ProgressDialog;
 import android.util.Log;
 
 import org.lzh.framework.updatepluginlib.callback.UpdateDownloadCB;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.util.SafeDialogOper;
 
 import java.io.File;
@@ -31,7 +31,7 @@ import java.io.File;
  */
 public class DefaultNeedDownloadCreator implements DownloadCreator {
     @Override
-    public UpdateDownloadCB create(Update update,Activity activity) {
+    public UpdateDownloadCB create(UpdateInterface update,Activity activity) {
         if (activity == null || activity.isFinishing()) {
             Log.e("DownDialogCreator--->","show download dialog failed:activity was recycled or finished");
             return null;

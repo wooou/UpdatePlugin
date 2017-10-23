@@ -17,7 +17,7 @@ package org.lzh.framework.updatepluginlib.creator;
 
 import org.lzh.framework.updatepluginlib.UpdateBuilder;
 import org.lzh.framework.updatepluginlib.UpdateConfig;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 
 /**
  * 用于提供在更新中对apk进行有效性、安全性检查的接口
@@ -39,7 +39,7 @@ public interface FileChecker {
      * @param file 被{@link ApkFileCreator}所创建的缓存文件地址
      * @return True代表验证成功
      */
-    boolean checkPreFile(Update update, String file);
+    boolean checkPreFile(UpdateInterface update, String file);
 
     /**
      * 当下载完成后。触发到此。进行文件安全校验检查。当检查成功。即可启动安装任务。安装更新apk
@@ -48,5 +48,5 @@ public interface FileChecker {
      * @param file 被{@link ApkFileCreator}所创建的缓存文件地址
      * @return True代表验证成功
      */
-    boolean checkAfterDownload (Update update, String file);
+    boolean checkAfterDownload (UpdateInterface update, String file);
 }

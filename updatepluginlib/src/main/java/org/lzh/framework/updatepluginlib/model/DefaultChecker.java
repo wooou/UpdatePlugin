@@ -29,7 +29,7 @@ import org.lzh.framework.updatepluginlib.util.UpdatePreference;
  */
 public class DefaultChecker implements UpdateChecker {
     @Override
-    public boolean check(Update update) throws Exception{
+    public boolean check(UpdateInterface update) throws Exception{
         int curVersion = getApkVersion(ActivityManager.get().getApplicationContext());
         return update.getVersionCode() > curVersion &&
                 (update.isForced() ||

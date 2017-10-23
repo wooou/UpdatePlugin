@@ -35,5 +35,5 @@ public interface UpdateChecker {
      * @return True代表检查通过。此版本需要被更新
      * @throws Exception error occurs.
      */
-    boolean check(Update update) throws Exception;
+    boolean check(UpdateInterface update) throws Exception;
 }

@@ -15,7 +15,7 @@
  */
 package org.lzh.framework.updatepluginlib.strategy;
 
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 
 /**
  * 当为强制更新时，将会强制使用此更新策略。
@@ -29,7 +29,7 @@ import org.lzh.framework.updatepluginlib.model.Update;
  */
 public class ForcedUpdateStrategy implements UpdateStrategy {
     @Override
-    public boolean isShowUpdateDialog(Update update) {
+    public boolean isShowUpdateDialog(UpdateInterface update) {
         return true;
     }
 

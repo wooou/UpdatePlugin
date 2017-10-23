@@ -23,7 +23,7 @@ import org.lzh.framework.updatepluginlib.business.UpdateWorker;
 import org.lzh.framework.updatepluginlib.callback.DefaultCheckCB;
 import org.lzh.framework.updatepluginlib.callback.DefaultDownloadCB;
 import org.lzh.framework.updatepluginlib.creator.FileChecker;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 
 import java.io.File;
 
@@ -72,7 +72,7 @@ public final class Updater {
      * @param update update instance, should not be null;
      * @param builder The {@link DownloadWorker} instance provider
      */
-    public void downUpdate(Update update,UpdateBuilder builder) {
+    public void downUpdate(UpdateInterface update, UpdateBuilder builder) {
         // define a default download callback to receive callback from download task
         DefaultDownloadCB downloadCB = new DefaultDownloadCB();
         downloadCB.setBuilder(builder);

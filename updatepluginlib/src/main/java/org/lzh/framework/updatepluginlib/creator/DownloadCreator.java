@@ -20,7 +20,7 @@ import android.app.Activity;
 import org.lzh.framework.updatepluginlib.UpdateBuilder;
 import org.lzh.framework.updatepluginlib.UpdateConfig;
 import org.lzh.framework.updatepluginlib.callback.UpdateDownloadCB;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.strategy.UpdateStrategy;
 import org.lzh.framework.updatepluginlib.util.ActivityManager;
 
@@ -44,5 +44,5 @@ public interface DownloadCreator {
      * @param activity 顶部的Activity实例。通过{@link ActivityManager#topActivity()}进行获取
      * @return 被创建的回调器。允许为null。
      */
-    UpdateDownloadCB create(Update update, Activity activity);
+    UpdateDownloadCB create(UpdateInterface update, Activity activity);
 }

@@ -7,7 +7,7 @@ import android.support.v7.app.NotificationCompat;
 
 import org.lzh.framework.updatepluginlib.callback.UpdateDownloadCB;
 import org.lzh.framework.updatepluginlib.creator.DownloadCreator;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 
 import java.io.File;
 import java.util.UUID;
@@ -21,7 +21,7 @@ import java.util.UUID;
  */
 public class NotificationDownloadCreator implements DownloadCreator {
     @Override
-    public UpdateDownloadCB create(Update update, Activity activity) {
+    public UpdateDownloadCB create(UpdateInterface update, Activity activity) {
         // 返回一个UpdateDownloadCB对象用于下载时使用来更新界面。
         return new NotificationCB(activity);
     }

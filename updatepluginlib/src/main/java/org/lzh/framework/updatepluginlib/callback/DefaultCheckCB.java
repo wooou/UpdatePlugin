@@ -22,7 +22,7 @@ import org.lzh.framework.updatepluginlib.UpdateBuilder;
 import org.lzh.framework.updatepluginlib.Updater;
 import org.lzh.framework.updatepluginlib.business.UpdateWorker;
 import org.lzh.framework.updatepluginlib.creator.DialogCreator;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.util.ActivityManager;
 import org.lzh.framework.updatepluginlib.util.Recyclable;
 import org.lzh.framework.updatepluginlib.util.SafeDialogOper;
@@ -55,7 +55,7 @@ public final class DefaultCheckCB implements UpdateCheckCB,Recyclable {
     }
 
     @Override
-    public void hasUpdate(Update update) {
+    public void hasUpdate(UpdateInterface update) {
         try {
             if (checkCB != null) {
                 checkCB.hasUpdate(update);
@@ -120,7 +120,7 @@ public final class DefaultCheckCB implements UpdateCheckCB,Recyclable {
     }
 
     @Override
-    public void onCheckIgnore(Update update) {
+    public void onCheckIgnore(UpdateInterface update) {
         try {
             if (checkCB != null) {
                 checkCB.onCheckIgnore(update);

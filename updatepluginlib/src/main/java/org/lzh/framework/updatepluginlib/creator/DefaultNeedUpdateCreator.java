@@ -22,7 +22,7 @@ import android.content.DialogInterface;
 import android.util.Log;
 
 import org.lzh.framework.updatepluginlib.R;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.util.SafeDialogOper;
 
 /**
@@ -33,7 +33,7 @@ import org.lzh.framework.updatepluginlib.util.SafeDialogOper;
  */
 public class DefaultNeedUpdateCreator extends DialogCreator {
     @Override
-    public Dialog create(final Update update, Activity activity) {
+    public Dialog create(final UpdateInterface update, Activity activity) {
 
         if (activity == null || activity.isFinishing()) {
             Log.e("DialogCreator--->","Activity was recycled or finished,dialog shown failed!");

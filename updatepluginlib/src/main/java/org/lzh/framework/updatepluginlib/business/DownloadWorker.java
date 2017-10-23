@@ -18,7 +18,7 @@ package org.lzh.framework.updatepluginlib.business;
 import org.lzh.framework.updatepluginlib.callback.DefaultDownloadCB;
 import org.lzh.framework.updatepluginlib.callback.UpdateDownloadCB;
 import org.lzh.framework.updatepluginlib.creator.ApkFileCreator;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.util.Recyclable;
 import org.lzh.framework.updatepluginlib.util.Utils;
 
@@ -34,7 +34,7 @@ import java.io.File;
 public abstract class DownloadWorker extends UnifiedWorker implements Runnable,Recyclable {
 
     /**
-     * 通过{@link Update#setUpdateUrl(String)}所设置的远程apk下载地址
+     * 通过{@link UpdateInterface}所设置的远程apk下载地址
      */
     protected String url;
     /**
@@ -46,9 +46,9 @@ public abstract class DownloadWorker extends UnifiedWorker implements Runnable,R
      */
     private File cacheFileName;
     // 将update实例提供给子类使用。
-    protected Update update;
+    protected UpdateInterface update;
 
-    public void setUpdate(Update update) {
+    public void setUpdate(UpdateInterface update) {
         this.update = update;
         this.url = update.getUpdateUrl();
     }

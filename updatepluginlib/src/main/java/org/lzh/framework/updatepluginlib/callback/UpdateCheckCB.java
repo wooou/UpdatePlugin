@@ -20,7 +20,7 @@ import org.lzh.framework.updatepluginlib.UpdateConfig;
 import org.lzh.framework.updatepluginlib.business.UpdateWorker;
 import org.lzh.framework.updatepluginlib.creator.DialogCreator;
 import org.lzh.framework.updatepluginlib.creator.InstallCreator;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 
 /**
  * 检查更新的回调监听。
@@ -44,7 +44,7 @@ public interface UpdateCheckCB {
      * <p>回调线程：UI
      * @param update 更新数据实体类
      */
-    void hasUpdate(Update update);
+    void hasUpdate(UpdateInterface update);
 
     /**
      * 当检查到无更新时。通知到此：
@@ -69,10 +69,10 @@ public interface UpdateCheckCB {
     void onUserCancel();
 
     /**
-     * 当用户点击忽略此版本更新时触发到此回调中。触发入口在{@link DialogCreator#sendUserIgnore(Update)}和{@link InstallCreator#sendCheckIgnore(Update)}
+     * 当用户点击忽略此版本更新时触发到此回调中。触发入口在{@link DialogCreator#sendUserIgnore(UpdateInterface)}和{@link InstallCreator#sendCheckIgnore(Update)}
      *
      * <p>回调线程：UI
      * @param update Update entity
      */
-    void onCheckIgnore(Update update);
+    void onCheckIgnore(UpdateInterface update);
 }

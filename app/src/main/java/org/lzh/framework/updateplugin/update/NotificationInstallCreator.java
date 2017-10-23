@@ -13,7 +13,7 @@ import android.support.v7.app.NotificationCompat;
 
 import org.lzh.framework.updateplugin.R;
 import org.lzh.framework.updatepluginlib.creator.InstallCreator;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 
 import java.util.UUID;
 
@@ -25,7 +25,7 @@ public class NotificationInstallCreator extends InstallCreator {
     int id;
     NotificationManager manager;
     @Override
-    public Dialog create(Update update, String path, Activity activity) {
+    public Dialog create(UpdateInterface update, String path, Activity activity) {
         requestInstallReceiver = new RequestInstallReceiver();
         registerReceiver(activity);
         createNotification(activity);

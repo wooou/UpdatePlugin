@@ -19,8 +19,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-import org.lzh.framework.updatepluginlib.UpdateConfig;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.util.ActivityManager;
 
 /**
@@ -30,7 +29,7 @@ import org.lzh.framework.updatepluginlib.util.ActivityManager;
 public class DefaultFileChecker implements FileChecker {
 
     @Override
-    public boolean checkPreFile(Update update, String file) {
+    public boolean checkPreFile(UpdateInterface update, String file) {
         try {
             Context context = ActivityManager.get().getApplicationContext();
             PackageManager packageManager = context.getPackageManager();
@@ -42,7 +41,7 @@ public class DefaultFileChecker implements FileChecker {
     }
 
     @Override
-    public boolean checkAfterDownload(Update update, String file) {
+    public boolean checkAfterDownload(UpdateInterface update, String file) {
         // For default: skip checked.
         return true;
     }

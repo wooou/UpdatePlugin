@@ -3,11 +3,10 @@ package org.lzh.framework.updateplugin;
 import android.Manifest;
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.Button;
 
+import com.alibaba.fastjson.JSON;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
-import org.json.JSONObject;
 import org.lzh.framework.updateplugin.update.AllDialogShowStrategy;
 import org.lzh.framework.updateplugin.update.CustomApkFileCreator;
 import org.lzh.framework.updateplugin.update.NotificationDownloadCreator;
@@ -18,7 +17,7 @@ import org.lzh.framework.updateplugin.update.OkhttpDownloadWorker;
 import org.lzh.framework.updateplugin.widget.CheckedView;
 import org.lzh.framework.updatepluginlib.UpdateBuilder;
 import org.lzh.framework.updatepluginlib.UpdateConfig;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.model.UpdateParser;
 
 import butterknife.BindView;
@@ -104,22 +103,9 @@ public class SampleActivity extends Activity {
                 .url("https://raw.githubusercontent.com/yjfnypeu/UpdatePlugin/master/update.json")
                 .jsonParser(new UpdateParser() {
                     @Override
-                    public Update parse(String httpResponse) throws Exception {
-                        JSONObject object = new JSONObject(httpResponse);
-                        Update update = new Update();
-                        // 此apk包的下载地址
-                        update.setUpdateUrl(object.optString("update_url"));
-                        // 此apk包的版本号
-                        update.setVersionCode(object.optInt("update_ver_code"));
-                        // 此apk包的版本名称
-                        update.setVersionName(object.optString("update_ver_name"));
-                        // 此apk包的更新内容
-                        update.setUpdateContent(object.optString("update_content"));
-                        // 此apk包是否为强制更新
-                        update.setForced(true);
-                        // 是否显示忽略此次版本更新按钮
-                        update.setIgnore(object.optBoolean("ignore_able",false));
-                        return update;
+                    public UpdateInterface parse(String httpResponse) throws Exception {
+                        Update info = JSON.parseObject(httpResponse, Update.class);
+                        return info;
                     }
                 });
     }

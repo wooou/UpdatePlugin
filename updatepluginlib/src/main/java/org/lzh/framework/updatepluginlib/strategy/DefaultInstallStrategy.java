@@ -23,7 +23,7 @@ import android.os.Build;
 import android.os.Process;
 import android.text.TextUtils;
 
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.util.ActivityManager;
 import org.lzh.framework.updatepluginlib.util.UpdateInstallProvider;
 import org.lzh.framework.updatepluginlib.util.Utils;
@@ -41,7 +41,7 @@ public class DefaultInstallStrategy implements InstallStrategy{
     private static String DEFAULT_AUTHOR = null;
 
     @Override
-    public void install(Context context, String filename, Update update) {
+    public void install(Context context, String filename, UpdateInterface update) {
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setAction(Intent.ACTION_VIEW);
@@ -68,7 +68,7 @@ public class DefaultInstallStrategy implements InstallStrategy{
      * 进行判断是否是强制更新：若是则强制退出应用。
      * @param update 更新实体数据
      */
-    protected void exitIfForceUpdate(Update update) {
+    protected void exitIfForceUpdate(UpdateInterface update) {
         if (!update.isForced()) {
             return;
         }

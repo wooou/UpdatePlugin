@@ -17,11 +17,10 @@ package org.lzh.framework.updatepluginlib.creator;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.os.Process;
 
 import org.lzh.framework.updatepluginlib.UpdateBuilder;
 import org.lzh.framework.updatepluginlib.UpdateConfig;
-import org.lzh.framework.updatepluginlib.model.Update;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.strategy.UpdateStrategy;
 import org.lzh.framework.updatepluginlib.util.ActivityManager;
 import org.lzh.framework.updatepluginlib.util.Recyclable;
@@ -39,24 +38,24 @@ import org.lzh.framework.updatepluginlib.util.UpdatePreference;
  * <p>定制说明：<br>
  *     1. 当需要进行后续更新操作时(请求调起安装任务)：调用{@link #sendToInstall(String)}}<br>
  *     2. 当需要取消此次更新操作时：调用{@link #sendUserCancel()}<br>
- *     3. 当需要忽略此版本更新时：调用{@link #sendCheckIgnore(Update)}<br>
+ *     3. 当需要忽略此版本更新时：调用{@link #sendCheckIgnore(UpdateInterface)}<br>
  *
  * @author haoge
  */
 public abstract class InstallCreator implements Recyclable {
 
     private UpdateBuilder builder;
-    private Update update;
+    private UpdateInterface update;
 
     public void setBuilder(UpdateBuilder builder) {
         this.builder = builder;
     }
 
-    public void setUpdate(Update update) {
+    public void setUpdate(UpdateInterface update) {
         this.update = update;
     }
 
-    public abstract Dialog create(Update update, String path, Activity activity);
+    public abstract Dialog create(UpdateInterface update, String path, Activity activity);
 
     public void sendToInstall(String filename) {
         if (builder.getFileChecker().checkAfterDownload(update,filename)) {
@@ -75,7 +74,7 @@ public abstract class InstallCreator implements Recyclable {
         release();
     }
 
-    public void sendCheckIgnore(Update update) {
+    public void sendCheckIgnore(UpdateInterface update) {
         if (builder.getCheckCB() != null) {
             builder.getCheckCB().onCheckIgnore(update);
         }

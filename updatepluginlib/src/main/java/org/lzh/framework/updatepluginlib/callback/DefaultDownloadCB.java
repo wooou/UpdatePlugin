@@ -21,8 +21,7 @@ import android.app.Dialog;
 import org.lzh.framework.updatepluginlib.UpdateBuilder;
 import org.lzh.framework.updatepluginlib.business.DownloadWorker;
 import org.lzh.framework.updatepluginlib.creator.InstallCreator;
-import org.lzh.framework.updatepluginlib.model.Update;
-import org.lzh.framework.updatepluginlib.strategy.UpdateStrategy;
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 import org.lzh.framework.updatepluginlib.util.ActivityManager;
 import org.lzh.framework.updatepluginlib.util.Recyclable;
 import org.lzh.framework.updatepluginlib.util.SafeDialogOper;
@@ -39,7 +38,7 @@ public final class DefaultDownloadCB implements UpdateDownloadCB ,Recyclable {
     private UpdateBuilder builder;
     // 通过UpdateConfig或者UpdateBuilder所设置的下载回调监听。通过此监听器进行通知用户下载状态
     private UpdateDownloadCB downloadCB;
-    private Update update;
+    private UpdateInterface update;
     // 通过DownloadCreator所创建的回调监听，通过此监听器进行下载通知的UI更新
     private UpdateDownloadCB innerCB;
 
@@ -48,7 +47,7 @@ public final class DefaultDownloadCB implements UpdateDownloadCB ,Recyclable {
         downloadCB = builder.getDownloadCB();
     }
 
-    public void setUpdate(Update update) {
+    public void setUpdate(UpdateInterface update) {
         this.update = update;
     }
 

@@ -2,7 +2,8 @@ package org.lzh.framework.updatepluginlib.callback;
 
 import android.util.Log;
 
-import org.lzh.framework.updatepluginlib.model.Update;
+
+import org.lzh.framework.updatepluginlib.model.UpdateInterface;
 
 import java.io.File;
 
@@ -51,7 +52,7 @@ public final class LogCallback implements UpdateCheckCB, UpdateDownloadCB{
     }
 
     @Override
-    public void hasUpdate(Update update) {
+    public void hasUpdate(UpdateInterface update) {
         log(String.format("Checkout a new version apk is exist: update is %s", update));
     }
 
@@ -74,7 +75,7 @@ public final class LogCallback implements UpdateCheckCB, UpdateDownloadCB{
     }
 
     @Override
-    public void onCheckIgnore(Update update) {
+    public void onCheckIgnore(UpdateInterface update) {
         log("ignored for this update: " + update);
     }
 
